@@ -13,7 +13,7 @@
                     "anchor": {
                         "description": "The URL at the root of the linkset, a.k.a the link context",
                         "type": "string",
-                        "pattern": "^https?:\/\/[a-zA-z0-9./]+"
+                        "pattern": "^https?:\\/\\/[A-Za-z0-9./]+$"
                     },
                     "itemDescription": {
                         "name": "Item description",
@@ -27,7 +27,7 @@
                     }
                 },
                 "patternProperties": {
-                    "(?!(anchor|itemDescription|description))^([a-z-]+$)|(^https?:\/\/[a-zA-z0-9./]+$)": {
+                    "^(?!(anchor|itemDescription|description)$)([a-z-]+$|https?:\\/\\/[A-Za-z0-9./]+$)": {
                         "title": "Link object schema",
                         "description": "The schema for each link context object for each link relation",
                         "type": "array",
@@ -38,7 +38,7 @@
                                     "name": "href",
                                     "description": "The target URL",
                                     "type": "string",
-                                    "pattern": "^https?:\/\/[a-zA-z0-9./]+"
+                                    "pattern": "^https?:\\/\\/[A-Za-z0-9./]+$"
                                 },
                                 "title": {
                                     "title": "title",
@@ -51,7 +51,7 @@
                                     "type": "array",
                                     "items": {
                                         "type": "string",
-                                        "pattern": "(^\\w{2}$)|(^\\w{2}-\\w{2}$)"
+                                        "pattern": "^[A-Za-z]{2}(-[A-Za-z]{2})?$"
                                     }
                                 },
                                 "type": {
@@ -63,7 +63,10 @@
                                   "context": {
                                     "name":"Context",
                                     "description":"Any additional descriptor for the link, typically a geography or jurisdiction in which the link applies",
-                                    "type":"array"
+                                    "type":"array",
+                                      "items": {
+                                        "type": "string"
+                                      }
                                   },
                                   "fwqs" : {
                                     "name":"Forward query strings",
