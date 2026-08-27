@@ -45,6 +45,30 @@
                                     "description": "A human-readable title for the link",
                                     "type": "string"
                                 },
+                                "title*": {
+                                    "name": "title*",
+                                    "description": "Language-tagged human-readable title(s) for the link",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "value": {
+                                                "name": "value",
+                                                "type": "string"
+                                            },
+                                            "language": {
+                                                "name": "language",
+                                                "type": "string",
+                                                "pattern": "(^\\w{2}$)|(^\\w{2}-\\w{2}$)"
+                                            }
+                                        },
+                                        "required": [
+                                            "value",
+                                            "language"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
                                 "hreflang": {
                                     "name": "hreflang",
                                     "description": "The human language(s) of the target resource",
